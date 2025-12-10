@@ -1639,7 +1639,7 @@ export default function MathFlashcards() {
   if (mode === 'practice' && quizStarted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-300 to-yellow-200 flex flex-col items-center justify-center p-4">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full">
+        <div className="bg-white rounded-3xl shadow-2xl p-4 max-w-md w-full">
           <div className="flex justify-between items-center mb-4">
             <button onClick={() => { goBack(); setMode('menu'); }} className="text-purple-500 hover:text-purple-700 font-medium">← Back</button>
             <div className={`text-2xl font-bold ${getTimerColor()}`}>⏱️ {formatTime(timeRemaining)}</div>
@@ -1658,15 +1658,14 @@ export default function MathFlashcards() {
                 style={{ width: `${(timeRemaining / sessionDuration) * 100}%` }} />
             </div>
           </div>
-          <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-8 mb-6 shadow-inner">
-            <div className="text-center">
-              <p className="text-5xl font-bold text-gray-800 mb-2">{currentProblem.display}</p>
-              <p className="text-3xl text-gray-500">=</p>
-              <p className="text-4xl font-bold text-gray-400 mt-2">?</p>
+          <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-4 mb-4 shadow-inner">
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <span className="text-4xl font-bold text-gray-800">{currentProblem.display}</span>
+              <span className="text-3xl text-gray-500">=</span>
+              <input ref={inputRef} type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} onKeyPress={handleKeyPress}
+                placeholder="?" className="w-24 text-center text-3xl font-bold p-3 border-2 border-purple-300 rounded-xl focus:border-purple-500 focus:outline-none bg-white" disabled={showAnswer} />
             </div>
           </div>
-          <input ref={inputRef} type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} onKeyPress={handleKeyPress}
-            placeholder="Your answer..." className="w-full text-center text-3xl font-bold p-4 border-2 border-purple-300 rounded-xl focus:border-purple-500 focus:outline-none mb-4" disabled={showAnswer} />
           {feedback && (
             <div className={`text-center p-4 rounded-xl mb-4 ${feedback === 'correct' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
               {feedback === 'correct' ? <p className="text-xl font-bold">🎉 Correct!</p> : <div><p className="text-xl font-bold">Not quite!</p><p>Answer: <span className="font-bold">{currentProblem.answer}</span></p></div>}

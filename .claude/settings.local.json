@@ -5,7 +5,13 @@
       "Bash(npm start)",
       "mcp__playwright__browser_navigate",
       "Bash(gh auth:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_take_screenshot"
     ],
     "deny": [],
     "ask": []
